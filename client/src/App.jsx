@@ -1,10 +1,14 @@
 import React from 'react';
+import Callback from "./pages/Callback";
 
 const App = () => {
   const loginWithAngelOne = () => {
-    const CLIENT_ID = 'YOUR_CLIENT_ID';
-    const REDIRECT_URI = 'http://localhost:3000/callback';
-    window.location.href = `https://smartapi.angelbroking.com/publisher-login?api_key=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}`;
+    const CLIENT_ID = '8oOb83yJ'; // Your actual Angel One API key
+    const REDIRECT_URI = 'https://papertrade.vercel.app/callback'; // Your live redirect URI
+
+    const loginUrl = `https://smartapi.angelbroking.com/publisher-login?api_key=${CLIENT_ID}&redirect_uri=${encodeURIComponent(REDIRECT_URI)}`;
+
+    window.location.href = loginUrl;
   };
 
   return (
@@ -19,5 +23,7 @@ const App = () => {
     </div>
   );
 };
+
+<Route path="/callback" element={<Callback />} />
 
 export default App;
